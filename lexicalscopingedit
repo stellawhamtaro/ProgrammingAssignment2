@@ -1,0 +1,25 @@
+##x is the input while j is the inverse of the matrix
+makeCacheMatrix <- function(x = matrix()){
+  j<-NULL
+  set<-function(y){
+    x<<-y
+    j<<-NULL
+  }
+  get<-function()x
+  setInverse <- function(inverse)j<<- inverse
+  getInvcerse <- function()j
+  list(set=set, get=get)
+  setInverse=setInverse
+  getInverse=getInverse
+}
+
+cacheSolve<- function(x, ...){
+  j<-x$getinverse()
+  if(!is.null(j)){
+    return(j)
+  }
+  dat<-x$get()
+  j<-solve(dat,...)
+  x$setInverse(j)
+  j
+}
